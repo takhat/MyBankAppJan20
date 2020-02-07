@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Text;
 
 namespace BankApp
@@ -9,6 +10,7 @@ namespace BankApp
     /// </summary>
     class Account
     {
+        private int lastAccountNumber = 0;
         #region Properties
         /// <summary>
         /// Unique Account Number
@@ -23,7 +25,7 @@ namespace BankApp
         /// <summary>
         /// Current Balance
         /// </summary>
-        public decimal Balance { get; set; }
+        public decimal Balance { get; private set; }
         /// <summary>
         /// Email Address
         /// </summary>
@@ -33,5 +35,28 @@ namespace BankApp
         /// </summary>
         public DateTime CreatedDate { get; set; }
         #endregion
+        #region Constructor
+        public Account()
+        { 
+            AccountNumber = ++lastAccountNumber;
+        }
+
+        #endregion
+        #region Methods
+        /// <summary>
+        /// Deposit money into the account
+        /// </summary>
+        /// <param name="amount">Amount to deposit</param>
+        public void Deposit(decimal amount) 
+        {
+            Balance += amount;
+        }
+        public decimal Withdraw(decimal amount)
+        {
+            Balance -= amount;
+            return Balance;
+        }
+        #endregion
     }
 }
+
