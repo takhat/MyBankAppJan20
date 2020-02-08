@@ -8,18 +8,25 @@ namespace BankApp
     /// <summary>
     /// This represents Bank account where you can withdraw or deposit money into the account
     /// </summary>
+    enum TypeofAccounts
+    {  
+        Checking,
+        Savings,
+        CD,
+        Loan
+    }
     class Account
     {
-        private int lastAccountNumber = 0;
+        private static int lastAccountNumber = 0; 
         #region Properties
         /// <summary>
         /// Unique Account Number
         /// </summary>
-        public int AccountNumber { get; set; }
+        public int AccountNumber { get; private set; }
         /// <summary>
         /// Select an Account Type
         /// </summary>
-        public string AccountType { get; set; }
+        public TypeofAccounts AccountType { get; set; }
         /// Personalized Account Name 
         public string AccountName { get; set; }
         /// <summary>
@@ -39,8 +46,8 @@ namespace BankApp
         public Account()
         { 
             AccountNumber = ++lastAccountNumber;
+            CreatedDate = DateTime.UtcNow;
         }
-
         #endregion
         #region Methods
         /// <summary>
