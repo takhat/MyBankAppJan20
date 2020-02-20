@@ -5,16 +5,16 @@ using System.Text;
 
 namespace BankApp
 {
-    /// <summary>
-    /// This represents Bank account where you can withdraw or deposit money into the account
-    /// </summary>
     enum TypeofAccounts
-    {  
+    {
         Checking,
         Savings,
         CD,
         Loan
     }
+    /// <summary>
+    /// This represents Bank account where you can withdraw or deposit money into the account
+    /// </summary>
     class Account
     {
         private static int lastAccountNumber = 0; 
@@ -27,7 +27,9 @@ namespace BankApp
         /// Select an Account Type
         /// </summary>
         public TypeofAccounts AccountType { get; set; }
+        /// <summary>
         /// Personalized Account Name 
+        /// <summary>
         public string AccountName { get; set; }
         /// <summary>
         /// Current Balance
